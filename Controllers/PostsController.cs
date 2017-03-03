@@ -19,5 +19,15 @@ namespace CopProjectAPI.Controllers
             }
 
         }
+
+        public IEnumerable<Post> Get(int id)
+        {
+            using (CopProjectDBEntities entities = new CopProjectDBEntities())
+            {
+                entities.Configuration.ProxyCreationEnabled = false;
+                return entities.Posts.Where(obj => obj.UserId == id).ToList();     
+             }
+
+        }
     }
 }
