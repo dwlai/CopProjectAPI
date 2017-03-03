@@ -22,8 +22,8 @@ namespace CopProjectAPI
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                routeTemplate: "api/{controller}/{orgId}/{badge}",
+                defaults: new { badge = RouteParameter.Optional, orgId = RouteParameter.Optional }
             );
         }
     }
