@@ -38,5 +38,26 @@ namespace CopProjectAPI.Controllers
 
 
         }
+
+        public HttpResponseMessage Post([FromBody]Post post)
+        {
+            try
+            {
+                using (CopProjectDBEntities entities = new CopProjectDBEntities())
+                {
+                    entities.Posts.Add(post);
+                    entities.SaveChanges();
+
+                    var message = Request.CreateResponse(HttpStatusCode.Created, post);
+                    message.Headers.Location = new Uri(Request.RequestUri + post.UserId.ToString());
+
+                    return message;
+                }
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+        }
     }
 }
