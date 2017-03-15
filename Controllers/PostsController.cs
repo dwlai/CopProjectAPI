@@ -5,13 +5,16 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using PostsDataAccess;
+using System.Web.Http.Cors;
 
 namespace CopProjectAPI.Controllers
 {
+    [EnableCors(origins: "http://192.168.2.2", headers:"*", methods:"*")]
     public class PostsController : ApiController
     {
         public IEnumerable<Post> Get()
         {
+           
             using (CopProjectDBEntities entities = new CopProjectDBEntities())
             {
                 entities.Configuration.ProxyCreationEnabled = false;
