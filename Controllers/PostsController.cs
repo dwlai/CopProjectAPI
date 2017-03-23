@@ -9,7 +9,7 @@ using System.Web.Http.Cors;
 
 namespace CopProjectAPI.Controllers
 {
-    [EnableCors(origins: "http://192.168.2.2,http://focus.evermight.com", headers:"*", methods:"*")]
+    [EnableCors(origins: "http://192.168.2.2,http://focus.evermight.com, http://192.168.0.104", headers:"*", methods:"*")]
     public class PostsController : ApiController
     {
         public IEnumerable<Post> Get()
